@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no">
+    <title>LoLoLoL</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        canvas {
+        }
+
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">K.K.R.</a>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Options</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">1</label>
+
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="項目名" value="パート愛" name="in1">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="number" max="10" min="0" class="form-control" value="1" name="vl1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">2</label>
+
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="項目名" value="権力" name="in2">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="number" max="10" min="0" class="form-control" value="2" name="vl2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">3</label>
+
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="項目名" value="女子力" name="in3">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="number" max="10" min="0" class="form-control" value="3" name="vl3">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">4</label>
+
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="項目名" value="コミュ力" name="in4">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="number" max="10" min="0" class="form-control" value="4" name="vl4">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">5</label>
+
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="項目名" value="自由項目1" name="in5">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="number" max="10" min="0" class="form-control" value="5" name="vl5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">6</label>
+
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="項目名" value="自由項目2" name="in6">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="number" max="10" min="0" class="form-control" value="6" name="vl6">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary btn-lg">Generate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <canvas id="canvas" height="1000" width="1000"></canvas>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">License & Pathch</h3>
+        </div>
+        <div class="panel-body">
+            <pre class="pre-scrollable">
+/*!
+ * Chart.js
+ * http://chartjs.org/
+ *
+ * Copyright 2013 Nick Downie
+ * Released under the MIT license
+ * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
+ */
+            </pre>
+            <pre class="pre-scrollable">
+210,211c210,211
+< 			scaleLineColor : "rgba(0,0,0,.1)",
+< 			scaleLineWidth : 1,
+---
+> 			scaleLineColor : "rgba(0,0,0,1)",
+> 			scaleLineWidth : 2,
+217c217
+< 			scaleFontColor : "#666",
+---
+> 			scaleFontColor : "#000000",
+223,224c223,224
+< 			angleLineColor : "rgba(0,0,0,.1)",
+< 			angleLineWidth : 1,
+---
+> 			angleLineColor : "rgba(0,0,0,1)",
+> 			angleLineWidth : 2,
+227,228c227,228
+< 			pointLabelFontSize : 12,
+< 			pointLabelFontColor : "#666",
+---
+> 			pointLabelFontSize : 20,
+> 			pointLabelFontColor : "#000",
+583c583
+< 					ctx.lineTo(0,-maxSize);
+---
+> 					ctx.lineTo(0,-maxSize/2);
+588c588
+< 			for (var i=0; i<calculatedScale.steps; i++){
+---
+> 			for (var i=0; i<5; i++){
+629,630c629,630
+< 				var opposite = Math.sin(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
+< 				var adjacent = Math.cos(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
+---
+> 				var opposite = Math.sin(rotationDegree*k) * (maxSize / 2 + config.pointLabelFontSize);
+> 				var adjacent = Math.cos(rotationDegree*k) * (maxSize / 2+ config.pointLabelFontSize);
+1316,1318c1316,1318
+< 		        steps : numberOfSteps,
+< 				stepValue : stepValue,
+< 				graphMin : graphMin,
+---
+> 		        steps : 10,
+> 				stepValue : 1,
+> 				graphMin : 0,
+</pre>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/Chart.js"></script>
+<script>
+    $("form").submit(function (c) {
+        var f = $(this).serializeArray(), d = [], e = [];
+        $.each(f, function (c, a) {
+            a.name.match(/^in/) ? d.push(a.value) : e.push(a.value);
+        });
+        b.labels = d;
+        b.datasets[0].data = e;
+        (new Chart(document.getElementById("canvas").getContext("2d"))).Radar(b);
+        c.preventDefault();
+    });
+    var b = {labels: [], datasets: [
+        {fillColor: "rgba(0,0,0,.2)", strokeColor: "#000", pointColor: "#000", pointStrokeColor: "#000", data: []}
+    ]};
+</script>
+</body>
+</html>
