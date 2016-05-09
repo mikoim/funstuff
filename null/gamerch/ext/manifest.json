@@ -1,0 +1,30 @@
+{
+    "name": "Gamerch",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "",
+    "homepage_url": "http://miko.im/",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "permissions": [
+        "http://*.gamerch.com/gamerch/newEntry/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*.gamerch.com/*"
+            ],
+            "exclude_matches": [
+                "https://gamerch.com/*"
+            ],
+            "js": [
+                "js/jquery-2.1.1.min.js",
+                "js/sprintf.js",
+                "js/inject_skpr.js"
+            ]
+        }
+    ]
+}
