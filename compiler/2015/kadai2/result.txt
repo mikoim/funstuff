@@ -1,0 +1,24 @@
+$ ./CalcL
+(((123/456)+456)-123*(123+456))-567*890;
+
+Contents of Instruction Segment
+    0  push-i      123
+    1  push-i      456
+    2    /
+    3  push-i      456
+    4    +
+    5  push-i      123
+    6  push-i      123
+    7  push-i      456
+    8    +
+    9    *
+   10    -
+   11  push-i      567
+   12  push-i      890
+   13    *
+   14    -
+   15  output
+   16  halt
+
+Enter execution phase
+        -575391
