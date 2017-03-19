@@ -1,0 +1,20 @@
+
+Contents of Instruction Segment
+    0  push-i       41    
+    1  push-i       15    
+    2    +                
+    3  push-i       14    
+    4    /                
+    5  push-i       11    
+    6  push-i       10    
+    7    -                
+    8    /                
+    9  push-i       10    
+   10    *                
+   11  push-i       30    
+   12    %                
+   13  output             
+   14  halt               
+
+Enter execution phase
+             10
