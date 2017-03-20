@@ -1,0 +1,7 @@
+int a;
+int b;
+int avg;
+read a;
+read b;
+avg = a + b / 2;
+write avg;
