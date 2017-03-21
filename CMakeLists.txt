@@ -13,6 +13,8 @@ ADD_FLEX_BISON_DEPENDENCY(Scanner Parser)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS} -g -O0 -lfl")
+
 add_executable(ExprC
         ${BISON_Parser_OUTPUTS}
         ${FLEX_Scanner_OUTPUTS}
