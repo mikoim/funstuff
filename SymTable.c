@@ -10,12 +10,11 @@ void SymDecl(char *sptr) {
   int i;
 
   SymTab[Last + 1] = sptr;
-  for (i = 1; SymTab[i] != sptr; i++) {
-    if (i > Last) {
-      Last++;
-    } else {
-      yyerror("Duplicated declaration");
-    }
+  for (i = 1; SymTab[i] != sptr; i++);
+  if (i > Last) {
+    Last++;
+  } else {
+    yyerror("Duplicated declaration");
   }
 }
 
@@ -23,8 +22,7 @@ int SymRef(char *sptr) {
   int i;
 
   SymTab[Last + 1] = sptr;
-  for (i = 1; SymTab[i] != sptr; i++)
-    ;
+  for (i = 1; SymTab[i] != sptr; i++);
   if (i > Last) {
     yyerror("Undeclared identifier used");
   }
