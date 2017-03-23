@@ -67,6 +67,8 @@ void SetUpOpt(int argc, char *argv[]) {
         case 't':
           TraceSW = 1;
           break;
+        default:
+          break;
       }
     }
     argc--;
