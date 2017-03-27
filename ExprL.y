@@ -36,7 +36,7 @@ decl_list :
           ;
 
 decl : TYPE ID { SymDecl($2); }
-     | decl ", " ID { SymDecl($3); }
+     | decl ', ' ID { SymDecl($3); }
      ;
 
 s_list : stmnt
