@@ -1,5 +1,0 @@
-int a, b, avg;
-read a;
-read b;
-avg = (a + b) / 2;
-write avg;
