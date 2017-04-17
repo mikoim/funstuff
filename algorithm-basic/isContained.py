@@ -1,10 +1,10 @@
-def isContained(a, c):
+def isContained(a: list, c) -> bool:
     for elem in a:
         if elem == c:
             return True
     return False
 
-def isContained_opt(a, c):
+def isContained_opt(a: list, c) -> bool:
     if len(a) == 0 or max(a) < c or min(a) > c:
         return False
 
