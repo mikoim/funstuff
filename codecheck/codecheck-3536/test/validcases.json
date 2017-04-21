@@ -1,0 +1,603 @@
+[
+  {
+    "input": "262",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "260",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "155",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "87",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "13",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "195",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "78",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "157",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "206 217 72 151 241 183 161 141",
+    "output": [ "smart", "smart", "idiot", "smart", "smart", "dumb", "smart", "idiot" ]
+  },
+  {
+    "input": "177 148 257 145",
+    "output": [ "idiot", "smart", "smart", "smart" ]
+  },
+  {
+    "input": "112 288 108",
+    "output": [ "smart", "idiot", "idiot" ]
+  },
+  {
+    "input": "66",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "57 285 127 170",
+    "output": [ "idiot", "idiot", "smart", "smart" ]
+  },
+  {
+    "input": "265",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "232",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "65",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "246",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "77 89 103 115",
+    "output": [ "smart", "smart", "stupid", "smart" ]
+  },
+  {
+    "input": "185 255 258 240",
+    "output": [ "smart", "idiot", "idiot", "idiot" ]
+  },
+  {
+    "input": "261",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "223",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "168",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "58",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "208",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "264",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "54 174 215",
+    "output": [ "idiot", "idiot", "smart" ]
+  },
+  {
+    "input": "197 36",
+    "output": [ "smart", "dumb" ]
+  },
+  {
+    "input": "1 51 153 29",
+    "output": [ "smart", "idiot", "dumb", "smart" ]
+  },
+  {
+    "input": "118",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "191 63",
+    "output": [ "smart", "dumb"
+    ]
+  },
+  {
+    "input": "205 99 3",
+    "output": [ "smart", "idiot", "dumb" ]
+  },
+  {
+    "input": "131",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "133",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "247 111",
+    "output": [ "smart", "idiot" ]
+  },
+  {
+    "input": "296",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "49",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "144 187 282 135 30",
+    "output": [ "idiot", "smart", "idiot", "dumb", "dumb" ]
+  },
+  {
+    "input": "250",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "50",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "122 2 106 209",
+    "output": [ "smart", "smart", "smart", "smart" ]
+  },
+  {
+    "input": "220",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "216",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "67",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "104",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "82 126 7",
+    "output": [ "smart", "idiot", "smart" ]
+  },
+  {
+    "input": "188",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "158 234 164 85 184",
+    "output": [ "smart", "dumb", "smart", "smart", "smart" ]
+  },
+  {
+    "input": "6 271 286 38",
+    "output": [ "idiot", "smart", "smart", "stupid" ]
+  },
+  {
+    "input": "218 252",
+    "output": [ "smart", "idiot" ]
+  },
+  {
+    "input": "200",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "245 137 193 244 47 52 219 114 194 293 93 212",
+    "output": [ "smart", "stupid", "stupid", "smart", "smart", "smart", "idiot", "idiot", "smart", "stupid", "dumb", "smart" ]
+  },
+  {
+    "input": "178",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "236",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "225 75 95",
+    "output": [ "idiot", "idiot", "smart" ]
+  },
+  {
+    "input": "132",
+    "output": [ "dumb" ]
+  },
+  {
+    "input": "207",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "140",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "277",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "97",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "16",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "142 18",
+    "output": [ "smart", "idiot" ]
+  },
+  {
+    "input": "230 165 107 61 211 292 189 201",
+    "output": [ "stupid", "idiot", "smart", "smart", "smart", "smart", "idiot", "idiot" ]
+  },
+  {
+    "input": "100 149",
+    "output": [ "smart", "smart" ]
+  },
+  {
+    "input": "71 98 179 81 169",
+    "output": [ "smart", "smart", "smart", "idiot", "smart" ]
+  },
+  {
+    "input": "198",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "45 299 70 139 248 224",
+    "output": [ "idiot", "smart", "smart", "stupid", "smart", "smart" ]
+  },
+  {
+    "input": "44 242 196 53",
+    "output": [ "smart", "smart", "smart", "stupid" ]
+  },
+  {
+    "input": "39",
+    "output": [ "dumb" ]
+  },
+  {
+    "input": "222 34 116 259 172 235",
+    "output": [ "idiot", "stupid", "smart", "smart", "smart", "stupid" ]
+  },
+  {
+    "input": "256",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "175 203",
+    "output": [ "smart", "stupid" ]
+  },
+  {
+    "input": "229",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "43",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "239",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "289 268 291",
+    "output": [ "smart", "smart", "idiot" ]
+  },
+  {
+    "input": "204 182 129 251 273 8",
+    "output": [ "idiot", "smart", "idiot", "smart", "dumb", "smart" ]
+  },
+  {
+    "input": "297 276 147 160 88 101 113 163",
+    "output": [ "idiot", "idiot", "idiot", "smart", "smart", "smart", "stupid", "stupid" ]
+  },
+  {
+    "input": "173",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "156",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "146",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "25",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "84",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "42 40 55 10 26",
+    "output": [ "idiot", "smart", "smart", "smart", "smart" ]
+  },
+  {
+    "input": "73",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "228 37 79 210",
+    "output": [ "idiot", "stupid", "smart", "idiot" ]
+  },
+  {
+    "input": "274 253 150 32",
+    "output": [ "smart", "stupid", "idiot", "stupid" ]
+  },
+  {
+    "input": "233",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "128",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "117 33",
+    "output": [ "idiot", "dumb" ]
+  },
+  {
+    "input": "180",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "238 237 41 190",
+    "output": [ "stupid", "dumb", "smart", "smart" ]
+  },
+  {
+    "input": "94",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "280",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "9",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "270",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "267",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "64",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "134",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "221",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "294",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "46",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "83",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "31",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "76",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "167",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "287",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "74",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "119 56",
+    "output": [ "smart", "smart" ]
+  },
+  {
+    "input": "166",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "249",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "213",
+    "output": [ "dumb" ]
+  },
+  {
+    "input": "17",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "162 15 254 96",
+    "output": [ "idiot", "idiot", "smart", "idiot" ]
+  },
+  {
+    "input": "92",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "263",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "284",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "130",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "269 28 59 12 102 192 123 281",
+    "output": [ "smart", "smart", "smart", "idiot", "idiot", "idiot", "dumb", "smart" ]
+  },
+  {
+    "input": "176",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "14 27 152",
+    "output": [ "smart", "idiot", "smart" ]
+  },
+  {
+    "input": "181",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "24",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "199",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "19",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "143",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "278 138 121",
+    "output": [ "smart", "dumb", "smart" ]
+  },
+  {
+    "input": "4",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "214",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "60",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "154",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "300 20",
+    "output": [ "dumb", "smart" ]
+  },
+  {
+    "input": "136 22",
+    "output": [ "stupid", "smart" ]
+  },
+  {
+    "input": "295 266",
+    "output": [ "smart", "smart" ]
+  },
+  {
+    "input": "243",
+    "output": [ "dumb" ]
+  },
+  {
+    "input": "110 171 279",
+    "output": [ "smart", "idiot", "idiot" ]
+  },
+  {
+    "input": "105",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "227",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "120 68 21 159 275 272 124 80 48 298",
+    "output": [ "idiot", "smart", "idiot", "idiot", "smart", "smart", "smart", "smart", "idiot", "smart" ]
+  },
+  {
+    "input": "35",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "283",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "91",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "226",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "125 290",
+    "output": [ "smart", "smart" ]
+  },
+  {
+    "input": "23",
+    "output": [ "stupid" ]
+  },
+  {
+    "input": "69",
+    "output": [ "idiot" ]
+  },
+  {
+    "input": "86 109",
+    "output": [ "smart", "smart" ]
+  },
+  {
+    "input": "202",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "11 231 5 186",
+    "output": [ "smart", "dumb", "smart", "idiot" ]
+  },
+  {
+    "input": "62",
+    "output": [ "smart" ]
+  },
+  {
+    "input": "90",
+    "output": [ "idiot" ]
+  }
+]

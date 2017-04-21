@@ -1,0 +1,23 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - if [[ -e ~/docker/image.tar ]]; then echo docker load -i ~/docker/image.tar && echo 'cache image loaded'; fi
+    - docker build -t mikoim/subot .
+    - mkdir -p ~/docker; docker save mikoim/subot > ~/docker/image.tar
+
+test:
+  override:
+    - echo 'no tests'
+
+deployment:
+  arukas:
+    branch: master
+    commands:
+      - docker login -e "${DOCKER_EMAIL}" -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
+      - docker push mikoim/subot
+      - ./contrib/deploy_arukas.sh

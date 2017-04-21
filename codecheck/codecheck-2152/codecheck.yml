@@ -1,0 +1,2 @@
+build: pip3 install nose
+test: python3 -m "nose"

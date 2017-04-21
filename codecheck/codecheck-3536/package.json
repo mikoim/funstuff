@@ -1,0 +1,18 @@
+{
+  "name": "3-idiots-cli-challenge",
+  "version": "1.0.0",
+  "description": "Simple fizzbuzz like command line application challenge",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "codecheck": "^0.6.0"
+  },
+  "scripts": {
+    "test": "codecheck"
+  },
+  "author": "Givery Inc.",
+  "license": "ISC"
+}

@@ -1,0 +1,122 @@
+[
+  { "input": "S J o",
+    "output": [ "invalid", "invalid", "invalid" ]
+  },
+  { "input": "M NSB o",
+    "output": [ "invalid", "invalid", "invalid" ]
+  },
+  { "input": "Rn d z x o0",
+    "output": [ "invalid", "invalid", "invalid", "invalid", "invalid" ]
+  },
+  { "input": "MSA",
+    "output": [ "invalid" ]
+  },
+  { "input": "n R",
+    "output": [ "invalid", "invalid" ]
+  },
+  { "input": "p Ng =",
+    "output": [ "invalid", "invalid", "invalid" ]
+  },
+  { "input": "BK",
+    "output": [ "invalid" ]
+  },
+  { "input": "U1 o",
+    "output": [ "invalid", "invalid" ]
+  },
+  { "input": "N",
+    "output": [ "invalid" ]
+  },
+  { "input": "0bd1001101",
+    "output": [ "invalid" ]
+  },
+  { "input": "A",
+    "output": [ "invalid" ]
+  },
+  { "input": "U",
+    "output": [ "invalid" ]
+  },
+  { "input": "o= E g M",
+    "output": [ "invalid", "invalid", "invalid", "invalid" ]
+  },
+  { "input": "g",
+    "output": [ "invalid" ]
+  },
+  { "input": "a01 y",
+    "output": [ "invalid", "invalid" ]
+  },
+  { "input": "RnJ",
+    "output": [ "invalid" ]
+  },
+  { "input": "Jp",
+    "output": [ "invalid" ]
+  },
+  { "input": "B",
+    "output": [ "invalid" ]
+  },
+  { "input": "Mj",
+    "output": [ "invalid" ]
+  },
+  { "input": "Mz Ay",
+    "output": [ "invalid", "invalid" ]
+  },
+  { "input": "A",
+    "output": [ "invalid" ]
+  },
+  { "input": "yMz",
+    "output": [ "invalid" ]
+  },
+  { "input": "Ax C 0xx68",
+    "output": [ "invalid", "invalid", "invalid" ]
+  },
+  { "input": "Q",
+    "output": [ "invalid" ]
+  },
+  { "input": "MC QgM M CAy",
+    "output": [ "invalid", "invalid", "invalid", "invalid" ]
+  },
+  { "input": "y K j",
+    "output": [ "invalid", "invalid", "invalid" ]
+  },
+  { "input": "Qg",
+    "output": [ "invalid" ]
+  },
+  { "input": "MS",
+    "output": [ "invalid" ]
+  },
+  { "input": "To1 IE I Ay o1 w",
+    "output": [ "invalid", "invalid", "invalid", "invalid", "invalid", "invalid" ]
+  },
+  { "input": "MT",
+    "output": [ "invalid" ]
+  },
+  { "input": "D",
+    "output": [ "invalid" ]
+  },
+  { "input": "o0M",
+    "output": [ "invalid" ]
+  },
+  { "input": "KU1 A",
+    "output": [ "invalid", "invalid" ]
+  },
+  { "input": "Ngo",
+    "output": [ "invalid" ]
+  },
+  { "input": "N",
+    "output": [ "invalid" ]
+  },
+  { "input": "M dC",
+    "output": [ "invalid", "invalid" ]
+  },
+  { "input": "pIE",
+    "output": [ "invalid" ]
+  },
+  { "input": "j",
+    "output": [ "invalid" ]
+  },
+  { "input": "S jAx 9j",
+    "output": [ "invalid", "invalid", "invalid" ]
+  },
+  { "input": "9jd",
+    "output": [ "invalid" ]
+  }
+]

@@ -1,0 +1,6 @@
+websockets==3.2
+rfGengou==0.3
+redis==2.10.5
+pyowm==2.5.0
+pytz==2016.7
+pytest==3.0.4
