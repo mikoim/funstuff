@@ -27,3 +27,5 @@ INSTALLED_APPS = (
 )
 
 SECRET_KEY = 'And Then There Were None'
+
+DEBUG = True
