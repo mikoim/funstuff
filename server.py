@@ -49,6 +49,7 @@ class APIServicer(api_pb2_grpc.APIServicer):
             item.__dict__.update(_json_format.MessageToDict(request, including_default_value_fields=True)['item'])
             item.full_clean()
             item.save()
+            item.refresh_from_db()
             return api_pb2.UpdateItemResponse(item=convert(item))
         except db.models.Item.DoesNotExist:
             context.set_code(grpc.StatusCode.NOT_FOUND)
