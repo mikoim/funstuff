@@ -1,8 +1,9 @@
+import os
 import uuid
+from unittest import TestCase
 
 import grpc
 import grpc._channel
-from django.test import TestCase
 from google.protobuf import json_format as _json_format
 
 import api_pb2
@@ -28,7 +29,10 @@ def sample(item_id: str, name='', title='', description='', price=0, pv=0, statu
 class APITest(TestCase):
     @classmethod
     def setUpClass(cls):
-        channel = grpc.insecure_channel('localhost:3000')
+        host = 'localhost:3000'
+        if os.environ.get('API_URL'):
+            host = os.environ.get('API_URL')
+        channel = grpc.insecure_channel(host)
         cls._api = api_pb2_grpc.APIStub(channel)
 
     @classmethod

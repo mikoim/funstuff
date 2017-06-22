@@ -1,20 +1,23 @@
 version: "2"
 services:
   redis:
-    image: redis
+    image: redis:alpine
+    restart: always
+#    volumes:
+#      - '/data'
   mysql:
-    image: mysql
+    image: mysql:5.7
+    restart: always
+    env_file: .env
+#    volumes:
+#      - '/var/lib/mysql'
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
+    image: mikoim/mercari
+    restart: always
+    env_file: .env
     ports:
       - '3000:3000'
     depends_on:
       - redis
       - mysql
-    networks:
-      - default
-    volumes:
-      - .:/app
-    command: []

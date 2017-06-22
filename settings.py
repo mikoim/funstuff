@@ -1,8 +1,8 @@
 import os
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# example) SQLite
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -10,17 +10,11 @@ DATABASES = {
     }
 }
 
-# example) MySQL
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': '',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-# }
+if os.environ.get('DATABASE_URL'):
+    import dj_database_url
+
+    db_from_env = dj_database_url.config()
+    DATABASES['default'] = dj_database_url.config()
 
 INSTALLED_APPS = (
     'db',
@@ -28,4 +22,6 @@ INSTALLED_APPS = (
 
 SECRET_KEY = 'And Then There Were None'
 
-DEBUG = True
+DEBUG = False
+if os.environ.get('DEBUG'):
+    DEBUG = True
