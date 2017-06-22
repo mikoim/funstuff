@@ -1,30 +1,79 @@
+import json
+import time
+from concurrent import futures
+
 import grpc
+from django.core.exceptions import ValidationError
+from django.db.models import F
+from django.forms.models import model_to_dict
+from google.protobuf import json_format as _json_format
+
 import api_pb2
 import api_pb2_grpc
-from concurrent import futures
-import time
+import db.models
+import db.views
+
+
+def convert(item: db.models.Item) -> api_pb2.Item:
+    return api_pb2.Item(**model_to_dict(item))
 
 
 class APIServicer(api_pb2_grpc.APIServicer):
-    def AddItem(self, request, context):
-        pass
+    def AddItem(self, request: api_pb2.Item, context) -> api_pb2.AddItemResponse:
+        try:
+            item = db.models.Item(**_json_format.MessageToDict(request))
+            item.full_clean()
+            item.save()
+            return api_pb2.AddItemResponse(item=convert(item))
+        except ValidationError as e:  # TODO: Return correct status code by exception types
+            context.set_code(grpc.StatusCode.INTERNAL)
+            context.set_details(json.dumps(e.messages))
+            return api_pb2.AddItemResponse()
 
-    def GetItem(self, request, context):
-        pass
+    def GetItem(self, request: api_pb2.GetItemRequest, context) -> api_pb2.Item:
+        try:
+            item = db.models.Item.objects.get(id=request.id)
+            db.models.Item.objects.filter(id=request.id).update(pv=F('pv') + 1)
+            return convert(item)
+        except db.models.Item.DoesNotExist:
+            context.set_code(grpc.StatusCode.NOT_FOUND)
+            context.set_details('Item does not exist')
+            return api_pb2.Item()
 
-    def UpdateItem(self, request, context):
-        pass
+    def UpdateItem(self, request: api_pb2.UpdateItemRequest, context) -> api_pb2.UpdateItemResponse:
+        try:
+            item = db.models.Item.objects.get(id=request.item.id)
+            item.__dict__.update(_json_format.MessageToDict(request))
+            item.full_clean()
+            item.save()
+            return api_pb2.UpdateItemResponse(item=convert(item))
+        except db.models.Item.DoesNotExist:
+            context.set_code(grpc.StatusCode.NOT_FOUND)
+            context.set_details('Item does not exist')
+            return api_pb2.UpdateItemResponse()
+        except ValidationError as e:  # TODO: Return correct status code by exception types
+            context.set_code(grpc.StatusCode.INTERNAL)
+            context.set_details(json.dumps(e.messages))
+            return api_pb2.UpdateItemResponse()
 
-    def DeleteItem(self, request, context):
-        pass
+    def DeleteItem(self, request: api_pb2.DeleteItemRequest, context) -> api_pb2.DeleteItemResponse:
+        try:
+            db.models.Item.objects.get(id=request.id).delete()
+            return api_pb2.DeleteItemResponse()
+        except db.models.Item.DoesNotExist:
+            context.set_code(grpc.StatusCode.NOT_FOUND)
+            context.set_details('Item does not exist')
+            return api_pb2.Item()
 
-    def ListItem(self, request, context):
-        pass
+    def ListItem(self, request: api_pb2.ListItemRequest, context) -> api_pb2.ListItemResponse:
+        context.set_code(grpc.StatusCode.INTERNAL)
+        context.set_details('Not implemented')
+        return api_pb2.ListItemResponse()
 
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    api_pb2_grpc.add_APIServicer_to_server(APIServicer, server)
+    api_pb2_grpc.add_APIServicer_to_server(APIServicer(), server)
     server.add_insecure_port('[::]:3000')
     server.start()
     try:
