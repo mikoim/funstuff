@@ -19,7 +19,7 @@ def convert(item: db.models.Item) -> api_pb2.Item:
 
 
 class APIServicer(api_pb2_grpc.APIServicer):
-    def AddItem(self, request: api_pb2.Item, context) -> api_pb2.AddItemResponse:
+    def AddItem(self, request: api_pb2.Item, context: grpc.ServicerContext) -> api_pb2.AddItemResponse:
         try:
             item = db.models.Item(**_json_format.MessageToDict(request, including_default_value_fields=True))
             item.full_clean()
@@ -30,7 +30,7 @@ class APIServicer(api_pb2_grpc.APIServicer):
             context.set_details(json.dumps(e.messages))
             return api_pb2.AddItemResponse()
 
-    def GetItem(self, request: api_pb2.GetItemRequest, context) -> api_pb2.Item:
+    def GetItem(self, request: api_pb2.GetItemRequest, context: grpc.ServicerContext) -> api_pb2.Item:
         try:
             item = db.models.Item.objects.get(id=request.id)
             db.models.Item.objects.filter(id=request.id).update(pv=F('pv') + 1)
@@ -40,7 +40,8 @@ class APIServicer(api_pb2_grpc.APIServicer):
             context.set_details('Item does not exist')
             return api_pb2.Item()
 
-    def UpdateItem(self, request: api_pb2.UpdateItemRequest, context) -> api_pb2.UpdateItemResponse:
+    def UpdateItem(self, request: api_pb2.UpdateItemRequest,
+                   context: grpc.ServicerContext) -> api_pb2.UpdateItemResponse:
         try:
             item = db.models.Item.objects.get(id=request.item.id)
             item.__dict__.update(_json_format.MessageToDict(request, including_default_value_fields=True)['item'])
@@ -56,7 +57,8 @@ class APIServicer(api_pb2_grpc.APIServicer):
             context.set_details(json.dumps(e.messages))
             return api_pb2.UpdateItemResponse()
 
-    def DeleteItem(self, request: api_pb2.DeleteItemRequest, context) -> api_pb2.DeleteItemResponse:
+    def DeleteItem(self, request: api_pb2.DeleteItemRequest,
+                   context: grpc.ServicerContext) -> api_pb2.DeleteItemResponse:
         try:
             db.models.Item.objects.get(id=request.id).delete()
             return api_pb2.DeleteItemResponse()
@@ -65,13 +67,13 @@ class APIServicer(api_pb2_grpc.APIServicer):
             context.set_details('Item does not exist')
             return api_pb2.Item()
 
-    def ListItem(self, request: api_pb2.ListItemRequest, context) -> api_pb2.ListItemResponse:
+    def ListItem(self, request: api_pb2.ListItemRequest, context: grpc.ServicerContext) -> api_pb2.ListItemResponse:
         context.set_code(grpc.StatusCode.INTERNAL)
         context.set_details('Not implemented')
         return api_pb2.ListItemResponse()
 
 
-def serve():
+def serve() -> None:
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     api_pb2_grpc.add_APIServicer_to_server(APIServicer(), server)
     server.add_insecure_port('[::]:3000')
