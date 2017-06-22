@@ -33,7 +33,9 @@ class APIServicer(api_pb2_grpc.APIServicer):
     def GetItem(self, request: api_pb2.GetItemRequest, context: grpc.ServicerContext) -> api_pb2.Item:
         try:
             item = db.models.Item.objects.get(id=request.id)
-            db.models.Item.objects.filter(id=request.id).update(pv=F('pv') + 1)
+            item.pv = F('pv') + 1
+            item.save()
+            item.refresh_from_db()
             return convert(item)
         except db.models.Item.DoesNotExist:
             context.set_code(grpc.StatusCode.NOT_FOUND)
