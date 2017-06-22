@@ -82,5 +82,8 @@ class APITest(TestCase):
 
         self.assertEqual(e.exception._state.code, grpc.StatusCode.NOT_FOUND)
 
-    def test_ListItem(self):
-        self._api.ListItem(api_pb2.ListItemRequest())
+    def test_ListItem(self):  # TODO: implement successful case
+        with self.assertRaises(grpc._channel._Rendezvous) as e:
+            self._api.ListItem(api_pb2.ListItemRequest(page=-1, limit=1))
+
+        self.assertEqual(e.exception._state.code, grpc.StatusCode.INVALID_ARGUMENT)
