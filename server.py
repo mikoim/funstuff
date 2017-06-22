@@ -12,7 +12,6 @@ from google.protobuf import json_format as _json_format
 import api_pb2
 import api_pb2_grpc
 import db.models
-import db.views
 
 
 def convert(item: db.models.Item) -> api_pb2.Item:
