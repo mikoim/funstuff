@@ -68,7 +68,7 @@ class APIServicer(api_pb2_grpc.APIServicer):
         except db.models.Item.DoesNotExist:
             context.set_code(grpc.StatusCode.NOT_FOUND)
             context.set_details('Item does not exist')
-            return api_pb2.Item()
+            return api_pb2.DeleteItemResponse()
 
     def ListItem(self, request: api_pb2.ListItemRequest, context: grpc.ServicerContext) -> api_pb2.ListItemResponse:
         context.set_code(grpc.StatusCode.INTERNAL)
