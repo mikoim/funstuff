@@ -73,7 +73,6 @@ class APITest(TestCase):
     def test_DeleteItem(self):
         item_id = random_id()
         input_data = sample(item_id)
-        output_data = None
 
         self._api.AddItem(api_pb2.Item(**input_data))
         self._api.DeleteItem(api_pb2.DeleteItemRequest(id=item_id))
