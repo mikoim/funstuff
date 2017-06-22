@@ -1,11 +1,12 @@
+import uuid
+
 import grpc
+import grpc._channel
 from django.test import TestCase
+from google.protobuf import json_format as _json_format
 
 import api_pb2
 import api_pb2_grpc
-
-import uuid
-from google.protobuf import json_format as _json_format
 
 
 def random_id() -> str:
@@ -70,20 +71,16 @@ class APITest(TestCase):
 
     def test_DeleteItem(self):
         item_id = random_id()
+        input_data = sample(item_id)
+        output_data = None
 
-        self._api.AddItem(api_pb2.Item(
-            id=item_id,
-            name='a',
-            title='a',
-            description='a',
-            price=1,
-            pv=1,
-            status=True,
-        ))
+        self._api.AddItem(api_pb2.Item(**input_data))
+        self._api.DeleteItem(api_pb2.DeleteItemRequest(id=item_id))
 
-        self._api.DeleteItem(api_pb2.DeleteItemRequest(
-            id=item_id,
-        ))
+        with self.assertRaises(grpc._channel._Rendezvous) as e:
+            self._api.GetItem(api_pb2.GetItemRequest(id=item_id))
+
+        self.assertEqual(e.exception._state.code, grpc.StatusCode.NOT_FOUND)
 
     def test_ListItem(self):
         self._api.ListItem(api_pb2.ListItemRequest())
