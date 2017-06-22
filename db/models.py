@@ -10,5 +10,8 @@ class Item(models.Model):
     pv = models.IntegerField()
     status = models.BooleanField()
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self) -> str:
         return f'{self.name}'

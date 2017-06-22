@@ -4,6 +4,7 @@ from concurrent import futures
 
 import grpc
 from django.core.exceptions import ValidationError
+from django.core.paginator import Paginator, InvalidPage
 from django.db.models import F
 from django.forms.models import model_to_dict
 from google.protobuf import json_format as _json_format
@@ -71,9 +72,21 @@ class APIServicer(api_pb2_grpc.APIServicer):
             return api_pb2.DeleteItemResponse()
 
     def ListItem(self, request: api_pb2.ListItemRequest, context: grpc.ServicerContext) -> api_pb2.ListItemResponse:
-        context.set_code(grpc.StatusCode.INTERNAL)
-        context.set_details('Not implemented')
-        return api_pb2.ListItemResponse()
+        page = request.page
+        limit = request.limit
+        items = Paginator(db.models.Item.objects.all(), limit)
+
+        try:
+            return api_pb2.ListItemResponse(
+                items=map(convert, items.page(page).object_list),
+                total=db.models.Item.objects.count(),
+                prevPage=max(1, page - 1),
+                nextPage=min(page + 1, items.num_pages),
+            )
+        except InvalidPage:
+            context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
+            context.set_details('Invalid page number')
+            return api_pb2.ListItemResponse()
 
 
 def serve() -> None:
