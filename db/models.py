@@ -7,7 +7,7 @@ class Item(models.Model):
     title = models.TextField()
     description = models.TextField()
     price = models.IntegerField()
-    pv = models.IntegerField()
+    pv = models.IntegerField(default=0)
     status = models.BooleanField()
 
     def __str__(self) -> str:
