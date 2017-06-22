@@ -48,10 +48,11 @@ class APITest(TestCase):
 
         self._api.AddItem(api_pb2.Item(**input_data))
 
-        output_data = _json_format.MessageToDict(self._api.GetItem(api_pb2.GetItemRequest(id=item_id)), True)
-        input_data['pv'] += 1
+        for n in range(2):
+            output_data = _json_format.MessageToDict(self._api.GetItem(api_pb2.GetItemRequest(id=item_id)), True)
+            input_data['pv'] += 1
 
-        self.assertDictEqual(input_data, output_data)
+            self.assertDictEqual(input_data, output_data)
 
     def test_UpdateItem(self):
         item_id = random_id()
