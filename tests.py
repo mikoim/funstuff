@@ -14,7 +14,7 @@ def random_id() -> str:
     return str(uuid.uuid4())
 
 
-def sample(item_id: str, name='', title='', description='', price=0, pv=0, status=False) -> dict:
+def sample(item_id='', name='', title='', description='', price=0, pv=0, status=False) -> dict:
     return {
         'id': item_id,
         'name': name,
@@ -45,6 +45,11 @@ class APITest(TestCase):
 
         output_data = _json_format.MessageToDict(self._api.AddItem(api_pb2.Item(**input_data)), True)
         self.assertDictEqual({'item': input_data}, output_data)
+
+    def test_AddItem_without_ID(self):
+        input_data = sample()
+        output_data = _json_format.MessageToDict(self._api.AddItem(api_pb2.Item(**input_data)), True)
+        self.assertNotEqual(output_data['item']['id'], '')
 
     def test_GetItem(self):
         item_id = random_id()
