@@ -1,10 +1,5 @@
 version: "2"
 services:
-  redis:
-    image: redis:alpine
-    restart: always
-#    volumes:
-#      - '/data'
   mysql:
     image: mysql:5.7
     restart: always
@@ -19,5 +14,4 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - redis
       - mysql
