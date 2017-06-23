@@ -21,7 +21,7 @@ def convert(item: db.models.Item) -> api_pb2.Item:
 class APIServicer(api_pb2_grpc.APIServicer):
     def AddItem(self, request: api_pb2.Item, context: grpc.ServicerContext) -> api_pb2.AddItemResponse:
         try:
-            item = db.models.Item(**_json_format.MessageToDict(request, including_default_value_fields=True))
+            item = db.models.Item(**_json_format.MessageToDict(request))
             item.full_clean()
             item.save()
             return api_pb2.AddItemResponse(item=convert(item))
@@ -46,7 +46,7 @@ class APIServicer(api_pb2_grpc.APIServicer):
                    context: grpc.ServicerContext) -> api_pb2.UpdateItemResponse:
         try:
             item = db.models.Item.objects.get(id=request.item.id)
-            item.__dict__.update(_json_format.MessageToDict(request, including_default_value_fields=True)['item'])
+            item.__dict__.update(_json_format.MessageToDict(request)['item'])
             item.full_clean()
             item.save()
             item.refresh_from_db()
