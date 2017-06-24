@@ -1,9 +1,9 @@
-def main(argv):
-  # このコードは引数と標準出力を用いたサンプルコードです。
-  # このコードは好きなように編集・削除してもらって構いません。
-  # ---
-  # This is a sample code to use arguments and outputs.
-  # Edit and remove this code as you like.
+from websocket import create_connection
 
-  for i, v in enumerate(argv):
-    print("argv[{0}]: {1}".format(i, v))
+
+def main(argv):
+    ws = create_connection("ws://challenge-server.code-check.io/api/websocket/hello")
+    name = ' '.join(ws.recv().split(' ')[2:])
+    ws.send(f'Hello, {name}')
+    print(ws.recv())
+    ws.close()
