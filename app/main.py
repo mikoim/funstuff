@@ -1,9 +1,16 @@
-def main(argv):
-  # このコードは引数と標準出力を用いたサンプルコードです。
-  # このコードは好きなように編集・削除してもらって構いません。
-  # ---
-  # This is a sample code to use arguments and outputs.
-  # Edit and remove this code as you like.
+from app.calculator import parser, lexer
 
-  for i, v in enumerate(argv):
-    print("argv[{0}]: {1}".format(i, v))
+
+def main(argv):
+    if len(argv) != 1:
+        exit(1)
+
+    formula = argv[0]
+
+    if len(formula.replace(' ', '')) == 0:
+        exit(1)
+
+    if formula.count('(') != formula.count(')'):
+        exit(3)
+
+    parser.parse(formula)
