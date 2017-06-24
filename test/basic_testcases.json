@@ -1,0 +1,123 @@
+[
+  {
+    "title": "exit with 1 when argument is blank",
+    "input": [""],
+    "output": "",
+    "code": 1
+  },
+  {
+    "title": "exit with code 2 when the argument contains invalid character ('3 + x - y')",
+    "input": ["3 + x - y"],
+    "output": "",
+    "code": 2
+  },
+  {
+    "title": "exit with code 3 when the argument contains unbalanced parenthesis",
+    "input": ["2 * (3 + 4"],
+    "output": "",
+    "code": 3
+  },
+  {
+    "title": "exit with code 4 when the argument is invalid infix notation ('3++')",
+    "input": ["3++"],
+    "output": "",
+    "code": 4
+  },
+  {
+    "title": "'1 + 2' -> '1 2 + = 3'",
+    "input": ["1 + 2"],
+    "output": "1 2 + = 3",
+    "code": 0
+  },
+  {
+    "title": "'1 - 2' -> '1 2 - = -1'",
+    "input": ["1 - 2"],
+    "output": "1 2 - = -1",
+    "code": 0
+  },
+  {
+    "title": "'10 / 2' -> '10 2 / = 5'",
+    "input": ["10 / 2"],
+    "output": "10 2 / = 5",
+    "code": 0
+  },
+  {
+    "title": "'123 + 456' -> '123 456 + = 579'",
+    "input": ["123 + 456"],
+    "output": "123 456 + = 579",
+    "code": 0
+  },
+  {
+    "title": "'1 + 2 + 3' -> '1 2 + 3 + = 6'",
+    "input": ["1 + 2 + 3"],
+    "output": "1 2 + 3 + = 6",
+    "code": 0
+  },
+  {
+    "title": "'1 + 2 - 3' -> '1 2 + 3 - = 0'",
+    "input": ["1 + 2 - 3"],
+    "output": "1 2 + 3 - = 0",
+    "code": 0
+  },
+  {
+    "title": "'1 + 2 * 3' -> '1 2 3 * + = 7'",
+    "input": ["1 + 2 * 3"],
+    "output": "1 2 3 * + = 7",
+    "code": 0
+  },
+  {
+    "title": "'(1 + 2) * 3' -> '1 2 + 3 * = 9'",
+    "input": ["(1 + 2) * 3"],
+    "output": "1 2 + 3 * = 9",
+    "code": 0
+  },
+  {
+    "title": "'12 / 3 * 4' -> 12 3 / 4 * = 16'",
+    "input": ["12 / 3 * 4"],
+    "output": "12 3 / 4 * = 16",
+    "code": 0
+  },
+  {
+    "title": "'1 + 2 + 3 + 4' -> '1 2 + 3 + 4 + = 10'",
+    "input": ["1 + 2 + 3 + 4"],
+    "output": "1 2 + 3 + 4 + = 10",
+    "code": 0
+  },
+  {
+    "title": "'1 + 2 - 3 + 4' -> '1 2 + 3 - 4 + = 4'",
+    "input": ["1 + 2 - 3 + 4"],
+    "output": "1 2 + 3 - 4 + = 4",
+    "code": 0
+  },
+  {
+    "title": "'1 + 2 * 3 + 4' -> '1 2 3 * + 4 + = 11'",
+    "input": ["1 + 2 * 3 + 4"],
+    "output": "1 2 3 * + 4 + = 11",
+    "code": 0
+  },
+  {
+    "title": "'1 + 2 * 3 * 4' -> '1 2 3 * 4 * + = 25'",
+    "input": ["1 + 2 * 3 * 4"],
+    "output": "1 2 3 * 4 * + = 25",
+    "code": 0
+  },
+
+  {
+    "title": "'1 * 2 * 3 * 4' -> '1 2 * 3 * 4 * = 24'",
+    "input": ["1 * 2 * 3 * 4"],
+    "output": "1 2 * 3 * 4 * = 24",
+    "code": 0
+  },
+  {
+    "title": "'(1 + 2) * (3 + 4)' -> '1 2 + 3 4 + * = 21'",
+    "input": ["(1 + 2) * (3 + 4)"],
+    "output": "1 2 + 3 4 + * = 21",
+    "code": 0
+  },
+  {
+    "title": "'4 * ((3 - 2) + 1)' -> '4 3 2 - 1 + * = 8'",
+    "input": ["4 * ((3 - 2) + 1)"],
+    "output": "4 3 2 - 1 + * = 8",
+    "code": 0
+  }
+]
