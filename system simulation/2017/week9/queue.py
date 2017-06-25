@@ -76,7 +76,7 @@ def sim(customer_per_slice=6, time_slice=600, duration=17 * 60, max_seat=9, arri
 
 
 if __name__ == '__main__':
-    # # Problem 1
+    # Problem 1 random
     # for n in range(2, 11, 1):
     #     l = [sim(n) for _ in range(10000)]
     #
@@ -90,7 +90,10 @@ if __name__ == '__main__':
     #
     #     mean_queue_list = list(map(statistics.mean, itertools.zip_longest(*l, fillvalue=0)))
     #
-    #     print(n, max_queue_len, mean_queue_len, min_queue_len, max_closed_time, mean_closed_time, min_closed_time, mean_queue_list)
+    #     print(n, max_queue_len, mean_queue_len, min_queue_len, max_closed_time, mean_closed_time, min_closed_time)
+    #
+    #     with open('random/{:d}.json'.format(n), mode='w') as fp:
+    #         json.dump(mean_queue_list, fp)
 
     # Problem 2
     # for consumer, duration, seat in itertools.product(range(8, 11, 2), range(2 * 60, 21 * 60, 120), range(2, 11, 2)):
