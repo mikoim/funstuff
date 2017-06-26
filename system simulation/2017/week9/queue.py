@@ -96,8 +96,8 @@ if __name__ == '__main__':
     #         json.dump(mean_queue_list, fp)
 
     # Problem 2
-    # for consumer, duration, seat in itertools.product(range(8, 11, 2), range(2 * 60, 21 * 60, 120), range(2, 11, 2)):
-    #     l = [sim(consumer, duration=duration, max_seat=seat) for _ in range(1000)]
+    # for consumer, duration, seat in itertools.product(range(2, 21, 2), range(10 * 60, 21 * 60, 120), range(2, 21, 2)):
+    #     l = [sim(consumer, duration=duration, max_seat=seat) for _ in range(10000)]
     #
     #     max_queue_len = max(map(max, l))
     #     min_queue_len = min(map(min, l))
