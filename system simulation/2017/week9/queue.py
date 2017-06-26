@@ -107,7 +107,7 @@ if __name__ == '__main__':
     #     min_closed_time = min(map(len, l))
     #     mean_closed_time = statistics.mean(map(len, l))
     #
-    #     print(consumer, duration, seat, max_queue_len, mean_queue_len, min_queue_len, max_closed_time, mean_closed_time, min_closed_time)
+    #     print(consumer, duration, seat, max_queue_len, mean_queue_len, min_queue_len, max_closed_time, mean_closed_time, min_closed_time, flush=True)
 
     # Problem 1 static
     # for n in range(2, 11, 1):
