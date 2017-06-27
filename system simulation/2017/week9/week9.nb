@@ -1,0 +1,307 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11298,        299]
+NotebookOptionsPosition[     10785,        281]
+NotebookOutlinePosition[     11133,        296]
+CellTagsIndexPosition[     11090,        293]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/2.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/3.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/4.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/5.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/6.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/7.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/8.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/9.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<static/10.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"ListLinePlot", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "g", ",", 
+        "h", ",", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotLegends", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<n=2\>\"", ",", "\"\<n=3\>\"", ",", "\"\<n=4\>\"", ",", 
+         "\"\<n=5\>\"", ",", "\"\<n=6\>\"", ",", "\"\<n=7\>\"", ",", 
+         "\"\<n=8\>\"", ",", "\"\<n=9\>\"", ",", "\"\<n=10\>\""}], "}"}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"LabelStyle", "\[Rule]", "Large"}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Time [s]\>\"", ",", "\"\<Queue Length\>\""}], "}"}]}]}], 
+     "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<static-queue.pdf\>\"", ",", "%"}], "]"}]}], 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.707392852963111*^9, 3.707392936172892*^9}, {
+  3.707392989183424*^9, 3.707393079228804*^9}, {3.707395128647545*^9, 
+  3.7073951341205807`*^9}, {3.707400271128565*^9, 3.707400271630002*^9}, {
+  3.707580412592317*^9, 
+  3.707580448946064*^9}},ExpressionUUID->"3adf683c-bffd-4a44-98fe-\
+56838d5c5de8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/2.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/3.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/4.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/5.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/6.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/7.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/8.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/9.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random/10.json\>\"", ",", "\"\<JSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"ListLinePlot", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "g", ",", 
+        "h", ",", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotLegends", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<n=2\>\"", ",", "\"\<n=3\>\"", ",", "\"\<n=4\>\"", ",", 
+         "\"\<n=5\>\"", ",", "\"\<n=6\>\"", ",", "\"\<n=7\>\"", ",", 
+         "\"\<n=8\>\"", ",", "\"\<n=9\>\"", ",", "\"\<n=10\>\""}], "}"}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"LabelStyle", "\[Rule]", "Large"}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Time [s]\>\"", ",", "\"\<Queue Length\>\""}], "}"}]}]}], 
+     "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<random-queue.pdf\>\"", ",", "%"}], "]"}]}], 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.707393084805738*^9, 3.7073932196131487`*^9}, {
+   3.707394695728177*^9, 3.707394704127101*^9}, {3.707394749480885*^9, 
+   3.707394806186507*^9}, {3.70739487116858*^9, 3.7073948974406233`*^9}, {
+   3.70739495146691*^9, 3.707395068818015*^9}, {3.7073951397328367`*^9, 
+   3.707395156717475*^9}, {3.707395268699932*^9, 3.7073952781420116`*^9}, {
+   3.707395339950519*^9, 3.7073953746619883`*^9}, {3.707395408309428*^9, 
+   3.707395511330308*^9}, {3.707395635374205*^9, 3.7073956460378923`*^9}, {
+   3.707395729012751*^9, 3.70739575897458*^9}, {3.707397490874207*^9, 
+   3.70739751302219*^9}, 3.707397663705844*^9, {3.707400268233567*^9, 
+   3.707400321634811*^9}, 3.707400515616378*^9, {3.707580448951397*^9, 
+   3.7075804489596*^9}},ExpressionUUID->"2aa9b450-2d9e-46ad-b0b8-\
+a0e81c755195"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/2.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/4.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/6.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/8.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/10.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/12.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/14.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/16.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/18.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<random-var/20.tsv\>\"", ",", "\"\<TSV\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot3D", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "g", ",", "h",
+      ",", "i", ",", "j"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<n=2\>\"", ",", "\"\<n=4\>\"", ",", "\"\<n=6\>\"", ",", 
+      "\"\<n=8\>\"", ",", "\"\<n=10\>\"", ",", "\"\<n=12\>\"", ",", 
+      "\"\<n=14\>\"", ",", "\"\<n=16\>\"", ",", "\"\<n=18\>\"", ",", 
+      "\"\<n=20\>\""}], "}"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"LabelStyle", "\[Rule]", "Large"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Duration [s]\>\"", ",", "\"\<Seats\>\"", ",", 
+      "\"\<Average Queue Length\>\""}], "}"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"ViewPoint", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", " ", "1", ",", " ", "0.5"}], "}"}]}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<random-var.pdf\>\"", ",", "%", ",", 
+     RowBox[{"\"\<AllowRasterization\>\"", "\[Rule]", "False"}]}], "]"}], 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.707506259449542*^9, 3.70750637876394*^9}, {
+   3.707506409868361*^9, 3.707506463453429*^9}, {3.707506508167829*^9, 
+   3.707506512686096*^9}, {3.707506844455679*^9, 3.7075069670101357`*^9}, 
+   3.707507013892034*^9, {3.707507167811064*^9, 3.70750721150832*^9}, {
+   3.7075072777859707`*^9, 3.707507332292431*^9}, {3.7075791694126863`*^9, 
+   3.707579188167101*^9}, {3.7075792185493803`*^9, 3.707579283234325*^9}, {
+   3.707579391567474*^9, 3.7075794134772263`*^9}, {3.707579493898409*^9, 
+   3.707579513484632*^9}, {3.7075795863471003`*^9, 3.707579596451159*^9}, {
+   3.707579648787587*^9, 3.70757971177174*^9}, {3.7075798308358717`*^9, 
+   3.707579841148038*^9}, 3.707579897265553*^9, {3.7075800445064487`*^9, 
+   3.707580046247363*^9}, {3.707580172123974*^9, 3.7075801747711687`*^9}, {
+   3.707580206518857*^9, 3.7075802070145073`*^9}, {3.7075802896964417`*^9, 
+   3.707580291460704*^9}, {3.707580448967704*^9, 
+   3.7075804611419*^9}},ExpressionUUID->"fec72317-abb7-4668-a863-\
+705f7b6b042e"]
+},
+WindowSize->{1566, 967},
+WindowMargins->{{Automatic, 252}, {Automatic, 26}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (2017\:5e744\:670821\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2876, 77, 506, "Input", "ExpressionUUID" -> \
+"3adf683c-bffd-4a44-98fe-56838d5c5de8"],
+Cell[3437, 99, 3366, 83, 506, "Input", "ExpressionUUID" -> \
+"2aa9b450-2d9e-46ad-b0b8-a0e81c755195"],
+Cell[6806, 184, 3975, 95, 677, "Input", "ExpressionUUID" -> \
+"fec72317-abb7-4668-a863-705f7b6b042e"]
+}
+]
+*)
+
