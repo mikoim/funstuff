@@ -3,6 +3,16 @@
 
   void SymDecl(char *);
   int SymRef(char *);
+
+  void NestIn(int);
+  void NestOut(int);
+  void GenBrk(int);
+  void GenConti(void);
+  void BeginSW(void);
+  void EndSW(void);
+  void CaseLbl(int);
+  void DfltLbl(void);
+
   int yylex();
   void yyerror(const char *s);
 %}
@@ -12,9 +22,12 @@
   char *Name;
 }
 
-%token TYPE READ WRITE
-%token <Int> ADDOP MULOP PPMM RELOP NUM
+%token TYPE IF ELSE WHILE DO FOR
+%token SWITCH CASE DEFAULT BREAK CONTI READ WRITE
+%token <Int> RELOP ADDOP MULOP PPMM NUM
 %token <Name> ID
+
+%type <Int> if_part opt_expr tst_expr
 
 %right '='
 %right '?' ':'
@@ -25,7 +38,6 @@
 %left MULOP
 %right '!' PPMM UM
 %left POSOP
-
 %%
 
 program : decl_list s_list { Pout(HALT); }
@@ -43,11 +55,50 @@ s_list : stmnt
        | s_list stmnt
        ;
 
-stmnt : expr ';' { Pout(REMOVE); }
+stmnt : lbl_stmnt
+      | ';'
+      | expr ';' { Pout(REMOVE); }
       | READ LHS ';' { Pout(INPUT); }
       | WRITE expr ';' { Pout(OUTPUT); }
+      | '{' s_list '}'
+      | if_part { Bpatch($1, PC()); }
+      | if_part ELSE { $<Int>$ = PC(); Cout(JUMP, -1); Bpatch($1, PC()); }
+        stmnt { Bpatch($<Int>3, PC()); }
+      | WHILE { NestIn(WHILE); $<Int>$ = PC(); }
+        '(' expr ')' { GenBrk(BEQ); }
+        stmnt { GenConti(); NestOut($<Int>2); }
+      | DO { NestIn(DO); $<Int>$ = PC(); }
+        stmnt { $<Int>$ = PC(); }
+        WHILE '(' expr ')' { Cout(BNE, $<Int>2); }
+        ';' { NestOut($<Int>4); }
+      | FOR '(' opt_expr ';' { NestIn(FOR); }
+        tst_expr ';' { Cout(BNE, -1); GenBrk(JUMP); }
+        opt_expr ')' { Cout(JUMP, $3); Bpatch($6, PC()); }
+        stmnt { GenConti(); NestOut($6 + 2); }
+      | BREAK ';' { GenBrk(JUMP); }
+      | CONTI ';' { GenConti(); }
       | error ';' { yyerrok; }
       ;
+
+lbl_stmnt : CASE NUM ':' { CaseLbl($2); }
+            stmnt
+          | CASE ADDOP NUM ':' { CaseLbl($2 == SUB ? -$3 : $3); }
+            stmnt
+          | DEFAULT ':' { DfltLbl(); }
+            stmnt
+          ;
+
+if_part : IF '(' expr ')' { $<Int>$ = PC(); Cout(BEQ, -1); }
+          stmnt { $$ = $<Int>5; }
+        ;
+
+opt_expr : { $$ = PC(); }
+         | expr { Pout(REMOVE); $$ = PC(); }
+         ;
+
+tst_expr : { Cout(PUSHI, 1); $$ = PC(); }
+         | expr { $$ = PC(); }
+         ;
 
 LHS : ID { Cout(PUSHI, SymRef($1)); }
     ;
@@ -69,5 +120,4 @@ expr : LHS '=' expr { Pout(ASSGN); }
      | ID { Cout(PUSH, SymRef($1)); }
      | NUM { Cout(PUSHI, $1); }
      ;
-
 %%
