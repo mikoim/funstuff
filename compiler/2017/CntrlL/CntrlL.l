@@ -29,6 +29,21 @@ other .
 "!=" { yylval.Int = BNE; return RELOP; }
 ">=" { yylval.Int = BGE; return RELOP; }
 ">" { yylval.Int = BGT; return RELOP; }
+
+"if" { return IF; }
+"else" { return ELSE; }
+"while" { return WHILE; }
+"for" { return FOR; }
+"switch" { return SWITCH; }
+"do" { return DO; }
+"case" { return CASE; }
+"default" { return DEFAULT; }
+"break" { return BREAK; }
+"continue" { return CONTI; }
+
+"{" { return '{'; }
+"}" { return '}'; }
+
 "int" { return TYPE; }
 "read" { return READ; }
 "write" { return WRITE; }
