@@ -1,0 +1,9 @@
+int N, i;
+
+read N;
+
+for (i = 2; i <= N; i++) {
+  if (i % 2 == 0) {
+    write(i);
+  }
+}

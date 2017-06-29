@@ -1,0 +1,41 @@
+    0  push-i        1    
+    1  input              
+    2  push-i        2    
+    3  push-i        2    
+    4    =                
+    5  remove             
+    6  push          2    
+    7  push          1    
+    8  comp               
+    9  <=0 ?        12    
+   10  push-i        0    
+   11  jump         13    
+   12  push-i        1    
+   13  !=0 ?        -1    
+   14  jump         -1    
+   15  push          2    
+   16  copy               
+   17   ++                
+   18  pop           2    
+   19  remove             
+   20  jump          6    
+   21  push          2    
+   22  push-i        2    
+   23    %                
+   24  push-i        0    
+   25  comp               
+   26  ==0 ?        29    
+   27  push-i        0    
+   28  jump         30    
+   29  push-i        1    
+   30  ==0 ?        -1    
+   31  push          2    
+   32  output             
+   33  jump         -1    
+   34  halt               
+Enter execution phase
+              2
+              4
+              6
+              8
+             10
