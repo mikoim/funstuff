@@ -53,6 +53,98 @@ static void PrintIns(int loc) /* Edit and print of instruction */
     default:
       printf("%10c", ' ');
   }
+
+    printf("# ");
+
+    switch (op) { /* execute each instruction */
+        case NOP:
+            printf("何もしない");
+            break;
+        case ASSGN:
+            printf("POP => アドレス，POP => 値，値をアドレスが指し示す領域に格納");
+            break;
+        case ADD:
+            printf("POP => 値A, POP => 値B，値 = A + B，PUSH");
+            break;
+        case SUB:
+            break;
+        case MUL:
+            break;
+        case DIV:
+            break;
+        case MOD:
+            break;
+        case CSIGN:
+            break;
+        case AND:
+            break;
+        case OR:
+            break;
+        case NOT:
+            break;
+        case COMP:
+            Stack[SP - 1] =
+                    Stack[SP - 1] > Stack[SP] ? 1 : Stack[SP - 1] < Stack[SP] ? -1 : 0;
+            SP--;
+            printf("POP => 値A，POP => 値B， 値B > 値Aなら1・値B < 値Aなら-1・値A = 値Bなら0をPUSH");
+            break;
+        case COPY:
+            break;
+        case PUSH:
+            printf("アドレスが指し示す領域の値をPUSH");
+            break;
+        case PUSHI:
+            printf("アドレスをPUSH");
+            break;
+        case REMOVE:
+            printf("POP");
+            break;
+        case POP:
+            printf("アドレスが指し示す領域にPOPした値を格納");
+            break;
+        case INC:
+            break;
+        case DEC:
+            break;
+        case SETFR:
+            break;
+        case INCFR:
+            break;
+        case DECFR:
+            break;
+        case JUMP:
+            printf("PCにアドレスを格納");
+            break;
+        case BLT:
+            break;
+        case BLE:
+            printf("POP => 値，値が0以下であればPCにアドレスを格納");
+            break;
+        case BEQ:
+            break;
+        case BNE:
+            printf("POP => 値，値が0でなければPCにアドレスを格納");
+            break;
+        case BGE:
+            break;
+        case BGT:
+            break;
+        case CALL:
+            break;
+        case RET:
+            break;
+        case HALT:
+            printf("スタックマシンを停止");
+            break;
+        case INPUT:
+            printf("POP => アドレス，アドレスが示す領域に標準入力の値を格納");
+            break;
+        case OUTPUT:
+            printf("POP => アドレス，アドレスが示す先の値を標準出力へ出力");
+            break;
+        default:
+            break;
+    }
 }
 
 void SetPC(int Addr) /* Set program counter */
@@ -118,7 +210,7 @@ int StartVSM(int StartAddr, int TraceSW) /* Start VSM */
       printf("%15d %5d %12d\n", addr, SP, Stack[SP]);
     }
     switch (op) { /* execute each instruction */
-      case NOP:
+        case NOP:
         continue;
       case ASSGN:
         addr = Stack[--SP];
