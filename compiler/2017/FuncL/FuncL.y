@@ -54,8 +54,7 @@ decl : TYPE ID { VarDecl($2, $1, VAR); }
      | decl ',' f_head { Prototype($3, $1); }
      ;
 
-f_head : ID { $<SymP>$ = MakeFuncEntry($1); }
-              '(' p_list ')' { $$ = $<SymP>2; }
+f_head : ID { $<SymP>$ = MakeFuncEntry($1); } '(' p_list ')' { $$ = $<SymP>2; }
        ;
 
 p_list :

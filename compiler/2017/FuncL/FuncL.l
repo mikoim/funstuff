@@ -37,8 +37,8 @@ other .
 "{" { return '{'; }
 "}" { return '}'; }
 
-"int" { return TYPE; }
-"void" { return TYPE; }
+"int" { yylval.Int = INT; return TYPE; }
+"void" { yylval.Int = VOID; return TYPE; }
 
 "read" { return READ; }
 "write" { return WRITE; }
