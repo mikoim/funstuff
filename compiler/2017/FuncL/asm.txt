@@ -1,0 +1,66 @@
+Contents of Instruction Segment
+    0  push          0[fp]	# アドレスが指し示す領域の値をPUSH
+    1  ++FR          4    	# フレームレジスタの値をアドレスの値だけ増やす
+    2  return             	# POP => アドレス，PCにアドレスを格納
+    3  --FR          4    	# フレームレジスタの値をアドレスの値だけ減らす
+    4  pop           0[fp]	# アドレスが指し示す領域にPOPした値を格納
+    5  pop           3[fp]	# アドレスが指し示す領域にPOPした値を格納
+    6  pop           2[fp]	# アドレスが指し示す領域にPOPした値を格納
+    7  pop           1[fp]	# アドレスが指し示す領域にPOPした値を格納
+    8  push          1[fp]	# アドレスが指し示す領域の値をPUSH
+    9  push          2[fp]	# アドレスが指し示す領域の値をPUSH
+   10  comp               	# POP => 値A，POP => 値B， 値B > 値Aなら1・値B < 値Aなら-1・値A = 値Bなら0をPUSH
+   11  <=0 ?        14    	# POP => 値，値が0以下であればPCにアドレスを格納
+   12  push-i        0    	# アドレスをPUSH
+   13  jump         15    	# PCにアドレスを格納
+   14  push-i        1    	# アドレスをPUSH
+   15  ==0 ?        19    	# POP => 値，値が0以下であればPCにアドレスを格納
+   16  push          2[fp]	# アドレスが指し示す領域の値をPUSH
+   17  jump          0    	# PCにアドレスを格納
+   18  jump         39    	# PCにアドレスを格納
+   19  push          1[fp]	# アドレスが指し示す領域の値をPUSH
+   20  push-i        1    	# アドレスをPUSH
+   21    -                	# POP => 値A, POP => 値B，値 = A - B，PUSH
+   22  push          2[fp]	# アドレスが指し示す領域の値をPUSH
+   23  push          3[fp]	# アドレスが指し示す領域の値をPUSH
+   24  call          3    	# PCをPUSH，PCにアドレスを格納
+   25  push          2[fp]	# アドレスが指し示す領域の値をPUSH
+   26  push-i        1    	# アドレスをPUSH
+   27    -                	# POP => 値A, POP => 値B，値 = A - B，PUSH
+   28  push          3[fp]	# アドレスが指し示す領域の値をPUSH
+   29  push          1[fp]	# アドレスが指し示す領域の値をPUSH
+   30  call          3    	# PCをPUSH，PCにアドレスを格納
+   31  push          3[fp]	# アドレスが指し示す領域の値をPUSH
+   32  push-i        1    	# アドレスをPUSH
+   33    -                	# POP => 値A, POP => 値B，値 = A - B，PUSH
+   34  push          1[fp]	# アドレスが指し示す領域の値をPUSH
+   35  push          2[fp]	# アドレスが指し示す領域の値をPUSH
+   36  call          3    	# PCをPUSH，PCにアドレスを格納
+   37  call          3    	# PCをPUSH，PCにアドレスを格納
+   38  jump          0    	# PCにアドレスを格納
+   39  push-i        0    	# アドレスをPUSH
+   40  jump          0    	# PCにアドレスを格納
+   41  push          0[fp]	# アドレスが指し示す領域の値をPUSH
+   42  ++FR          5    	# フレームレジスタの値をアドレスの値だけ増やす
+   43  return             	# POP => アドレス，PCにアドレスを格納
+   44  --FR          5    	# フレームレジスタの値をアドレスの値だけ減らす
+   45  pop           0[fp]	# アドレスが指し示す領域にPOPした値を格納
+   46  push-i        1[fp]	# アドレスをPUSH
+   47  input              	# POP => アドレス，アドレスが示す領域に標準入力の値を格納
+   48  push-i        2[fp]	# アドレスをPUSH
+   49  input              	# POP => アドレス，アドレスが示す領域に標準入力の値を格納
+   50  push-i        3[fp]	# アドレスをPUSH
+   51  input              	# POP => アドレス，アドレスが示す領域に標準入力の値を格納
+   52  push-i        4[fp]	# アドレスをPUSH
+   53  push          1[fp]	# アドレスが指し示す領域の値をPUSH
+   54  push          2[fp]	# アドレスが指し示す領域の値をPUSH
+   55  push          3[fp]	# アドレスが指し示す領域の値をPUSH
+   56  call          3    	# PCをPUSH，PCにアドレスを格納
+   57    =                	# POP => アドレス，POP => 値，値をアドレスが指し示す領域に格納
+   58  remove             	# POP
+   59  push          4[fp]	# アドレスが指し示す領域の値をPUSH
+   60  output             	# POP => アドレス，アドレスが示す先の値を標準出力へ出力
+   61  jump         41    	# PCにアドレスを格納
+   62  setFR       999    	# フレームレジスタにアドレスを格納
+   63  call         44    	# PCをPUSH，PCにアドレスを格納
+   64  halt               	# スタックマシンを停止
