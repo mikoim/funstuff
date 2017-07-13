@@ -55,7 +55,7 @@ static void PrintIns(int loc) /* Edit and print of instruction */
       printf("%10c", ' ');
   }
 
-    printf("# ");
+    printf("\t# ");
 
     switch (op) { /* execute each instruction */
         case NOP:
@@ -68,6 +68,7 @@ static void PrintIns(int loc) /* Edit and print of instruction */
             printf("POP => 値A, POP => 値B，値 = A + B，PUSH");
             break;
         case SUB:
+            printf("POP => 値A, POP => 値B，値 = A - B，PUSH");
             break;
         case MUL:
             break;
@@ -108,10 +109,13 @@ static void PrintIns(int loc) /* Edit and print of instruction */
         case DEC:
             break;
         case SETFR:
+            printf("フレームレジスタにアドレスを格納");
             break;
         case INCFR:
+            printf("フレームレジスタの値をアドレスの値だけ増やす");
             break;
         case DECFR:
+            printf("フレームレジスタの値をアドレスの値だけ減らす");
             break;
         case JUMP:
             printf("PCにアドレスを格納");
@@ -122,17 +126,20 @@ static void PrintIns(int loc) /* Edit and print of instruction */
             printf("POP => 値，値が0以下であればPCにアドレスを格納");
             break;
         case BEQ:
+            printf("POP => 値，値が0以下であればPCにアドレスを格納");
             break;
         case BNE:
-            printf("POP => 値，値が0でなければPCにアドレスを格納");
+            printf("POP => 値，値が0であればPCにアドレスを格納");
             break;
         case BGE:
             break;
         case BGT:
             break;
         case CALL:
+            printf("PCをPUSH，PCにアドレスを格納");
             break;
         case RET:
+            printf("POP => アドレス，PCにアドレスを格納");
             break;
         case HALT:
             printf("スタックマシンを停止");
