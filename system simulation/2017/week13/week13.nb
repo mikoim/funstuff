@@ -452,7 +452,7 @@ Cell[BoxData[
 e71437a6ced3"]
 },
 WindowSize->{1341, 920},
-WindowMargins->{{Automatic, 515}, {78, Automatic}},
+WindowMargins->{{Automatic, 467}, {40, Automatic}},
 FrontEndVersion->"11.1 for Linux x86 (64-bit) (2017\:5e744\:670821\:65e5)",
 StyleDefinitions->"Default.nb"
 ]
