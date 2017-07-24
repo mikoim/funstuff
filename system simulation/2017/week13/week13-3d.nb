@@ -1,0 +1,996 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     41711,        988]
+NotebookOptionsPosition[     40455,        956]
+NotebookOutlinePosition[     40804,        971]
+CellTagsIndexPosition[     40761,        968]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Helper", " ", "Method"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"CalcDistance", "[", 
+      RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+     RowBox[{"EuclideanDistance", "[", 
+      RowBox[{"a", ",", "b"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"CalcAngle", "[", 
+      RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"90", "Degree"}], "-", 
+      RowBox[{"Abs", "[", 
+       RowBox[{"ArcSin", "[", 
+        FractionBox[
+         RowBox[{"Abs", "[", 
+          RowBox[{
+           RowBox[{"a", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "-", 
+           RowBox[{"b", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "]"}], 
+         RowBox[{"CalcDistance", "[", 
+          RowBox[{"a", ",", "b"}], "]"}]], "]"}], "]"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Object", " ", "Helper", " ", "Method"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"LightLocation", "[", "a_", "]"}], ":=", 
+     RowBox[{"a", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"LightLocationTop", "[", "a_", "]"}], ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"a", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"LightCd", "[", "a_", "]"}], ":=", 
+     RowBox[{"a", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SensorLocation", "[", "a_", "]"}], ":=", 
+     RowBox[{"a", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SensorLocationTop", "[", "a_", "]"}], ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"a", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SensorExpectLx", "[", "a_", "]"}], ":=", 
+     RowBox[{"a", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DrawMap", ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"lights", "=", 
+          RowBox[{
+           RowBox[{"Function", "[", 
+            RowBox[{"x", ",", 
+             RowBox[{"Point", "[", 
+              RowBox[{"LightLocationTop", "[", 
+               RowBox[{"LightLocation", "[", "x", "]"}], "]"}], "]"}]}], 
+            "]"}], "/@", "lightLocations"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"sensors", "=", 
+          RowBox[{
+           RowBox[{"Function", "[", 
+            RowBox[{"x", ",", 
+             RowBox[{"Point", "[", 
+              RowBox[{"SensorLocationTop", "[", 
+               RowBox[{"SensorLocation", "[", "x", "]"}], "]"}], "]"}]}], 
+            "]"}], "/@", "sensorLocations"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"background", "=", 
+          RowBox[{"Rectangle", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"5400", ",", "3600"}], "}"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"lines", "=", 
+          RowBox[{"Line", "/@", 
+           RowBox[{"Tuples", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"LightLocationTop", "/@", 
+               RowBox[{"LightLocation", "/@", "lightLocations"}]}], ",", 
+              RowBox[{"SensorLocationTop", "/@", 
+               RowBox[{"SensorLocation", "/@", "sensorLocations"}]}]}], "}"}],
+             "]"}]}]}], ","}], "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"Show", "[", 
+        RowBox[{
+         RowBox[{"Graphics", "[", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+           "LightGreen", ",", "background", ",", "\[IndentingNewLine]", 
+            "Black", ",", "lines", ",", "\[IndentingNewLine]", "Red", ",", 
+            RowBox[{"PointSize", "[", "0.015", "]"}], ",", "lights", ",", 
+            "\[IndentingNewLine]", "Blue", ",", "sensors"}], 
+           "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", "Large"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.708813747818722*^9, 3.708813797986215*^9}, {
+   3.708813845369212*^9, 3.708814075637982*^9}, {3.7088141275815163`*^9, 
+   3.708814230094009*^9}, {3.708814331289927*^9, 3.708814450253048*^9}, {
+   3.708815343990225*^9, 3.708815391779655*^9}, {3.708815468582925*^9, 
+   3.708815489866295*^9}, {3.708815970966051*^9, 3.708815971812632*^9}, {
+   3.708816304492697*^9, 3.7088163312537107`*^9}, {3.7088165647033*^9, 
+   3.708816604754962*^9}, {3.708816727052005*^9, 3.7088167377259607`*^9}, {
+   3.7088167934769163`*^9, 3.7088168428001013`*^9}, 3.708816890775128*^9, 
+   3.70881711930622*^9, {3.708822051091476*^9, 3.7088220620878897`*^9}, {
+   3.708822434389817*^9, 3.70882246489507*^9}, {3.7088235725512543`*^9, 
+   3.708823584206656*^9}, {3.7088236870156927`*^9, 3.708823699640088*^9}, 
+   3.70882375646203*^9, {3.708824104628015*^9, 3.70882410996115*^9}, {
+   3.708824251428656*^9, 3.708824255823352*^9}, {3.708824298324876*^9, 
+   3.70882432626991*^9}, {3.7088243566792583`*^9, 3.7088243568032618`*^9}, {
+   3.708824596618352*^9, 3.708824617713752*^9}, {3.708824688304263*^9, 
+   3.708824691510569*^9}, {3.7088247511075373`*^9, 3.708824758160802*^9}, {
+   3.70882914608486*^9, 3.708829150504127*^9}, {3.7088323117857227`*^9, 
+   3.708832318811645*^9}, {3.7088325729818153`*^9, 3.7088326403082323`*^9}, {
+   3.708832749501185*^9, 3.7088327949118137`*^9}, {3.7093834581189833`*^9, 
+   3.709383472792418*^9}, {3.709383504856845*^9, 3.709383510066312*^9}, {
+   3.709411163746361*^9, 3.70941119122058*^9}, {3.709411358297213*^9, 
+   3.709411394099448*^9}, {3.70941142571878*^9, 3.709411432003213*^9}, {
+   3.7094114954499903`*^9, 3.709411528737877*^9}, {3.709411567576227*^9, 
+   3.709411600764822*^9}, {3.7094117881558123`*^9, 3.709411794822259*^9}, {
+   3.709411895095982*^9, 3.709411928442685*^9}, 3.709411994132943*^9, {
+   3.7094120461601667`*^9, 3.709412048224173*^9}, {3.709412087067473*^9, 
+   3.709412108712661*^9}, {3.709412168305628*^9, 3.709412172244029*^9}, {
+   3.7094122448974943`*^9, 3.709412247857065*^9}, {3.7094136753926764`*^9, 
+   3.7094136899604177`*^9}, {3.709413759426112*^9, 3.709413776913042*^9}, {
+   3.7094138248421164`*^9, 3.709413895314405*^9}, {3.709413929675037*^9, 
+   3.7094139577227583`*^9}, {3.709418006491776*^9, 3.7094180152895947`*^9}, {
+   3.7098206239747353`*^9, 3.709820669863182*^9}, {3.7098216436242723`*^9, 
+   3.709821644758059*^9}},ExpressionUUID->"27302109-6e06-4def-9933-\
+6d59bc3354e3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Single", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"CalcLx", "[", 
+      RowBox[{"sensor_", ",", "light_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Cos", "[", 
+         RowBox[{"CalcAngle", "[", 
+          RowBox[{
+           RowBox[{"SensorLocation", "[", "sensor", "]"}], ",", 
+           RowBox[{"LightLocation", "[", "light", "]"}]}], "]"}], "]"}], "*", 
+        
+        RowBox[{"LightCd", "[", "light", "]"}]}], ")"}], "/", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"CalcDistance", "[", 
+          RowBox[{
+           RowBox[{"SensorLocation", "[", "sensor", "]"}], ",", 
+           RowBox[{"LightLocation", "[", "light", "]"}]}], "]"}], "/", 
+         "1000"}], ")"}], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"CalcError", "[", 
+      RowBox[{"sensor_", ",", "lights_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"SensorExpectLx", "[", "sensor", "]"}], "-", 
+      RowBox[{"Total", "[", 
+       RowBox[{
+        RowBox[{"Function", "[", 
+         RowBox[{"light", ",", 
+          RowBox[{"CalcLx", "[", 
+           RowBox[{"sensor", ",", "light"}], "]"}]}], "]"}], "/@", "lights"}],
+        "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"CalcLxs", "[", 
+      RowBox[{"sensor_", ",", "lights_"}], "]"}], ":=", 
+     RowBox[{"Total", "[", 
+      RowBox[{
+       RowBox[{"Function", "[", 
+        RowBox[{"light", ",", 
+         RowBox[{"CalcLx", "[", 
+          RowBox[{"sensor", ",", "light"}], "]"}]}], "]"}], "/@", "lights"}], 
+      "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7088159790740557`*^9, 3.708816275956088*^9}, {
+   3.708816399297185*^9, 3.708816562489148*^9}, {3.7088166070858507`*^9, 
+   3.708816608014695*^9}, {3.708816865768608*^9, 3.7088169010702257`*^9}, 
+   3.708817101909878*^9, {3.708821794989636*^9, 3.7088219976054153`*^9}, {
+   3.7088222313620453`*^9, 3.7088222661761627`*^9}, {3.708822469968824*^9, 
+   3.708822474050275*^9}, {3.708823628091157*^9, 3.7088236289766407`*^9}, 
+   3.708823673932659*^9, {3.7088237047057247`*^9, 3.708823705375258*^9}, {
+   3.708823773071364*^9, 3.708823778093066*^9}, {3.7088238765133457`*^9, 
+   3.708823903852913*^9}, {3.7088247241883307`*^9, 3.7088247289836483`*^9}, {
+   3.708998430539188*^9, 3.70899852231085*^9}, {3.708998572402516*^9, 
+   3.708998584568843*^9}, {3.7089989934530993`*^9, 3.708998998628367*^9}, {
+   3.708999029440804*^9, 3.708999033338024*^9}, {3.708999841109145*^9, 
+   3.708999847925746*^9}, {3.708999878491663*^9, 3.708999879104698*^9}, {
+   3.709000287246296*^9, 3.70900031786502*^9}, {3.7093843245523767`*^9, 
+   3.709384327407153*^9}, {3.70942115744039*^9, 3.709421157913168*^9}, {
+   3.709821873078268*^9, 
+   3.709821892030941*^9}},ExpressionUUID->"d008c2b0-aa6e-4799-91e4-\
+78313bd8f8ce"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Multiple", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CalcErrors", "[", 
+     RowBox[{"sensors_", ",", "lights_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Function", "[", 
+      RowBox[{"sensor", ",", 
+       RowBox[{"CalcError", "[", 
+        RowBox[{"sensor", ",", "lights"}], "]"}]}], "]"}], "/@", 
+     "sensors"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.708824116384471*^9, 3.708824132500071*^9}, {
+   3.708835092611436*^9, 3.7088351194378157`*^9}, {3.708836393479701*^9, 
+   3.708836400579664*^9}, {3.708837265351116*^9, 3.7088373029616756`*^9}, {
+   3.7089983133053017`*^9, 3.708998314487299*^9}, 3.708998429550129*^9, {
+   3.7089985873789454`*^9, 3.7089985880901947`*^9}, {3.708998632776834*^9, 
+   3.708998816146222*^9}, {3.709000123620137*^9, 3.7090001445919247`*^9}, 
+   3.70900018444916*^9, {3.7090003227331333`*^9, 3.709000360636271*^9}, {
+   3.7092047465767736`*^9, 3.709204786723961*^9}, {3.709384297312216*^9, 
+   3.709384300767406*^9}},ExpressionUUID->"02fa2998-60c2-4c9f-b025-\
+0dc03ab02ba1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Optimize", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"2", "D"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"lightLocations", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"300", ",", "2000", ",", "0"}], "}"}], ",", "x"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1500", ",", "2000", ",", "0"}], "}"}], ",", "y"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"2700", ",", "2000", ",", "0"}], "}"}], ",", "z"}], "}"}]}],
+       "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"sensorLocations", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"600", ",", "0", ",", "0"}], "}"}], ",", "400"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1800", ",", "0", ",", "0"}], "}"}], ",", "700"}], "}"}]}], 
+      "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"NMinimize", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Mean", "[", 
+          RowBox[{
+           RowBox[{"Function", "[", 
+            RowBox[{"x", ",", 
+             SuperscriptBox["x", "2"]}], "]"}], "/@", 
+           RowBox[{"CalcErrors", "[", 
+            RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], 
+          "]"}], ",", 
+         RowBox[{"0", "\[LessEqual]", "x"}], ",", 
+         RowBox[{"0", "\[LessEqual]", "y"}], ",", 
+         RowBox[{"0", "\[LessEqual]", "z"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"NMinimize", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Mean", "[", 
+           RowBox[{
+            RowBox[{"Function", "[", 
+             RowBox[{"x", ",", 
+              SuperscriptBox["x", "2"]}], "]"}], "/@", 
+            RowBox[{"CalcErrors", "[", 
+             RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], 
+           "]"}], "+", 
+          RowBox[{"Total", "[", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}], "]"}]}], ",", 
+         RowBox[{"0", "\[LessEqual]", "x"}], ",", 
+         RowBox[{"0", "\[LessEqual]", "y"}], ",", 
+         RowBox[{"0", "\[LessEqual]", "z"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.708998595837544*^9, 3.708998602143773*^9}, {
+   3.708998823089795*^9, 3.7089988948848133`*^9}, {3.708998925551332*^9, 
+   3.708998926934156*^9}, 3.708999081028318*^9, {3.708999149173337*^9, 
+   3.708999152381448*^9}, {3.708999237911351*^9, 3.708999255565703*^9}, {
+   3.708999618422903*^9, 3.708999627706088*^9}, {3.708999912462201*^9, 
+   3.708999920362611*^9}, {3.7090001987712727`*^9, 3.709000204479385*^9}, {
+   3.7090009405674334`*^9, 3.709001044436799*^9}, {3.709002242726296*^9, 
+   3.709002265770545*^9}, {3.709002724638379*^9, 3.7090027399591417`*^9}, {
+   3.709204525605672*^9, 3.709204607815881*^9}, {3.709204687622362*^9, 
+   3.7092046921664963`*^9}, {3.709380168891541*^9, 3.709380176842289*^9}, 
+   3.709380277906022*^9, 3.7093803600050383`*^9, {3.709380588238543*^9, 
+   3.709380594345522*^9}, {3.709384337304208*^9, 3.709384414275188*^9}, {
+   3.709384503194929*^9, 3.7093845172661333`*^9}, 3.7094115488231087`*^9, {
+   3.70941180754003*^9, 3.709411809085683*^9}, 3.709412293224167*^9, {
+   3.709412325697451*^9, 3.709412365956622*^9}, {3.7094180205316973`*^9, 
+   3.709418066930891*^9}, {3.709418379464506*^9, 3.709418397334687*^9}, {
+   3.709418455649611*^9, 3.709418533414192*^9}, {3.7094185676465063`*^9, 
+   3.70941862654281*^9}, {3.709418704387191*^9, 3.709418716505703*^9}, 
+   3.709419089534314*^9, {3.709815559155101*^9, 3.709815593721952*^9}, 
+   3.7098156397827473`*^9},ExpressionUUID->"f071ba21-3bcf-4cbd-8cb5-\
+98561f368ed6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"3", "D"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"lightLocations", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "2000", ",", "3600"}], "}"}], ",", "e"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1800", ",", "2000", ",", "3600"}], "}"}], ",", "f"}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3600", ",", "2000", ",", "3600"}], "}"}], ",", "g"}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"5400", ",", "2000", ",", "3600"}], "}"}], ",", "h"}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "2000", ",", "1800"}], "}"}], ",", "i"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1800", ",", "2000", ",", "1800"}], "}"}], ",", "j"}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3600", ",", "2000", ",", "1800"}], "}"}], ",", "k"}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"5400", ",", "2000", ",", "1800"}], "}"}], ",", "l"}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "2000", ",", "0"}], "}"}], ",", "m"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1800", ",", "2000", ",", "0"}], "}"}], ",", "n"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3600", ",", "2000", ",", "0"}], "}"}], ",", "o"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"5400", ",", "2000", ",", "0"}], "}"}], ",", "p"}], "}"}]}],
+       "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sensorLocations", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1000", ",", "0", ",", "2850"}], "}"}], ",", "700"}], "}"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"2200", ",", "0", ",", "2850"}], "}"}], ",", "500"}], "}"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3400", ",", "0", ",", "2850"}], "}"}], ",", "300"}], "}"}],
+        ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1000", ",", "0", ",", "2150"}], "}"}], ",", "900"}], "}"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"2200", ",", "0", ",", "2150"}], "}"}], ",", "700"}], "}"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3400", ",", "0", ",", "2150"}], "}"}], ",", "500"}], 
+        "}"}]}], "\[IndentingNewLine]", "}"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.709418052672431*^9, 3.709418070845212*^9}, 
+   3.709418675726166*^9, {3.709418813733128*^9, 3.7094190119301043`*^9}, {
+   3.7094190561131496`*^9, 3.709419081232916*^9}, {3.709419118725264*^9, 
+   3.709419190015101*^9}, 3.70941936004105*^9, {3.709419484836364*^9, 
+   3.709419495757019*^9}, {3.709420161396879*^9, 3.709420216821576*^9}, {
+   3.70942035603236*^9, 3.709420371222377*^9}, {3.709420416688108*^9, 
+   3.709420551931994*^9}, {3.709421455144246*^9, 3.7094214768179083`*^9}, 
+   3.7098155496596937`*^9, 3.709815649523929*^9, {3.709816057704061*^9, 
+   3.7098160603171663`*^9}, {3.709820946105032*^9, 3.709820946400269*^9}, 
+   3.70982123199684*^9, 3.70982127695466*^9, {3.7098213790443983`*^9, 
+   3.709821417916588*^9}, {3.709821473851914*^9, 3.709821544244131*^9}, {
+   3.709822237545179*^9, 
+   3.709822257096775*^9}},ExpressionUUID->"691e102d-8ba1-4c0e-b272-\
+824a557ebc7c"],
+
+Cell[BoxData[{
+ RowBox[{"NMinimize", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Mean", "[", 
+      RowBox[{
+       RowBox[{"Function", "[", 
+        RowBox[{"x", ",", 
+         SuperscriptBox["x", "2"]}], "]"}], "/@", 
+       RowBox[{"CalcErrors", "[", 
+        RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], "]"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"e", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"f", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"g", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"h", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"j", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"k", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"l", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"m", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"n", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"o", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"p", "\[GreaterEqual]", "0"}]}], "\[IndentingNewLine]", "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",", "l",
+      ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NMinimize", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Max", "[", 
+       RowBox[{
+        RowBox[{"Function", "[", 
+         RowBox[{"x", ",", 
+          SuperscriptBox["x", "2"]}], "]"}], "/@", 
+        RowBox[{"CalcErrors", "[", 
+         RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], "]"}], 
+      "+", 
+      RowBox[{"Total", "[", 
+       RowBox[{"{", 
+        RowBox[{
+        "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",", 
+         "l", ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"e", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"f", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"g", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"h", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"j", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"k", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"l", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"m", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"n", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"o", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"p", "\[GreaterEqual]", "0"}]}], "\[IndentingNewLine]", "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",", "l",
+      ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NMinimize", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Max", "[", 
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"x", ",", 
+           SuperscriptBox["x", "2"]}], "]"}], "/@", 
+         RowBox[{"CalcErrors", "[", 
+          RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], "]"}], 
+       "*", "0.9"}], "+", 
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",",
+           "l", ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}], "]"}], "*", 
+       "0.1"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"e", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"f", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"g", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"h", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"j", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"k", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"l", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"m", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"n", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"o", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"p", "\[GreaterEqual]", "0"}]}], "\[IndentingNewLine]", "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",", "l",
+      ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NMinimize", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Max", "[", 
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"x", ",", 
+           SuperscriptBox["x", "2"]}], "]"}], "/@", 
+         RowBox[{"CalcErrors", "[", 
+          RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], "]"}], 
+       "*", "0.7"}], "+", 
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",",
+           "l", ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}], "]"}], "*", 
+       "0.3"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"e", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"f", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"g", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"h", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"j", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"k", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"l", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"m", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"n", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"o", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"p", "\[GreaterEqual]", "0"}]}], "\[IndentingNewLine]", "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",", "l",
+      ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NMinimize", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Max", "[", 
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"x", ",", 
+           SuperscriptBox["x", "2"]}], "]"}], "/@", 
+         RowBox[{"CalcErrors", "[", 
+          RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], "]"}], 
+       "*", "0.3"}], "+", 
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",",
+           "l", ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}], "]"}], "*", 
+       "0.7"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"e", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"f", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"g", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"h", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"j", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"k", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"l", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"m", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"n", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"o", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"p", "\[GreaterEqual]", "0"}]}], "\[IndentingNewLine]", "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",", "l",
+      ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NMinimize", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Max", "[", 
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"x", ",", 
+           SuperscriptBox["x", "2"]}], "]"}], "/@", 
+         RowBox[{"CalcErrors", "[", 
+          RowBox[{"sensorLocations", ",", "lightLocations"}], "]"}]}], "]"}], 
+       "*", "0.1"}], "+", 
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",",
+           "l", ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}], "]"}], "*", 
+       "0.9"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"e", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"f", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"g", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"h", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"j", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"k", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"l", "\[GreaterEqual]", "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"m", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"n", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"o", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"p", "\[GreaterEqual]", "0"}]}], "\[IndentingNewLine]", "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "e", ",", "f", ",", "g", ",", "h", ",", "i", ",", "j", ",", "k", ",", "l",
+      ",", "m", ",", "n", ",", "o", ",", "p"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{
+  3.709419193269579*^9, {3.709419339148601*^9, 3.7094194443686523`*^9}, {
+   3.7094195289108562`*^9, 3.709419621766168*^9}, 3.7094205834734592`*^9, {
+   3.709420640272821*^9, 3.7094206415127*^9}, {3.709421550885895*^9, 
+   3.709421561746667*^9}, {3.709421794181117*^9, 3.7094217949899063`*^9}, {
+   3.709421828254242*^9, 3.709421845526128*^9}, {3.709421933404595*^9, 
+   3.709421934274063*^9}, {3.7094221125861673`*^9, 3.7094221134602623`*^9}, 
+   3.709422166793055*^9, {3.7094239951388817`*^9, 3.7094240148907223`*^9}, 
+   3.709719684446167*^9, {3.709816062893095*^9, 3.7098160673611803`*^9}, {
+   3.709820955233899*^9, 3.709820955633184*^9}, 3.7098217433582897`*^9, {
+   3.709911996810945*^9, 
+   3.7099121045424223`*^9}},ExpressionUUID->"15be1499-ed86-43b2-ac5e-\
+a34985c5f1e1"],
+
+Cell[BoxData[
+ RowBox[{"Block", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"e", "=", "5.0897177445922655`*^-6"}], ",", 
+     RowBox[{"f", "=", "0.0026336511324773467`"}], ",", 
+     RowBox[{"g", "=", "0.`"}], ",", 
+     RowBox[{"h", "=", "0.`"}], ",", 
+     RowBox[{"i", "=", "2171.3369041462092`"}], ",", 
+     RowBox[{"j", "=", "2277.091744125114`"}], ",", 
+     RowBox[{"k", "=", "440.4886837281417`"}], ",", 
+     RowBox[{"l", "=", "0.`"}], ",", 
+     RowBox[{"m", "=", "0.`"}], ",", 
+     RowBox[{"n", "=", "0.`"}], ",", 
+     RowBox[{"o", "=", "0.`"}], ",", 
+     RowBox[{"p", "=", "0.`"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Function", "[", 
+     RowBox[{"x", ",", 
+      RowBox[{"CalcError", "[", 
+       RowBox[{"x", ",", "lightLocations"}], "]"}]}], "]"}], "/@", 
+    "sensorLocations"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.7099138007609243`*^9, 3.709913852482542*^9}, 
+   3.709913982296358*^9, {3.709914019597618*^9, 3.709914039652914*^9}, {
+   3.709914132614107*^9, 3.70991415074063*^9}, {3.709914198455306*^9, 
+   3.709914220964274*^9}, {3.709914266045515*^9, 3.7099142798618517`*^9}, {
+   3.7099143233924913`*^9, 3.709914340965335*^9}, {3.709914381956237*^9, 
+   3.709914398132759*^9}},ExpressionUUID->"07fd0711-566f-49c0-9b88-\
+7bf2442b4904"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Map", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<map-3d.pdf\>\"", ",", "DrawMap"}], "]"}], "*)"}]}]], "Input",\
+
+ CellChangeTimes->{
+  3.709821689061345*^9, {3.709821771941656*^9, 3.709821772661669*^9}, 
+   3.7098227478014717`*^9},ExpressionUUID->"7a064eae-4c79-44e7-9e71-\
+7f29837bf3e2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Light", " ", "Map"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<lightmap-3d.pdf\>\"", ",", "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"lights", "=", 
+          RowBox[{
+           RowBox[{"Function", "[", 
+            RowBox[{"x", ",", 
+             RowBox[{"Point", "[", 
+              RowBox[{"LightLocationTop", "[", 
+               RowBox[{"LightLocation", "[", "x", "]"}], "]"}], "]"}]}], 
+            "]"}], "/@", "lightLocations"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"sensors", "=", 
+          RowBox[{
+           RowBox[{"Function", "[", 
+            RowBox[{"x", ",", 
+             RowBox[{"Point", "[", 
+              RowBox[{"SensorLocationTop", "[", 
+               RowBox[{"SensorLocation", "[", "x", "]"}], "]"}], "]"}]}], 
+            "]"}], "/@", "sensorLocations"}]}], ","}], "\[IndentingNewLine]", 
+        "}"}], ",", 
+       RowBox[{"Show", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Block", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"e", "=", "847.8418895638744`"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"f", "=", "1.6341138843498722`*^-6"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"g", "=", "3.8619706030337727`*^-7"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"h", "=", "1.0816382663487078`*^-6"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"i", "=", "2283.858093029564`"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"j", "=", "8.083085767816986`*^-6"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"k", "=", "1.4023677885689257`*^-6"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"l", "=", "1.997653779069349`*^-6"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"m", "=", "0.00004650220556086989`"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"n", "=", "5314.422935519922`"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"o", "=", "1244.7396861498985`"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"p", "=", "9.555862016777362`*^-6"}], ","}], 
+            "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"DensityPlot", "[", 
+            RowBox[{
+             RowBox[{"CalcLxs", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"a", ",", "0", ",", "b"}], "}"}], ",", "0"}], "}"}],
+                ",", "lightLocations"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", "0", ",", "5400"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"b", ",", "0", ",", "3600"}], "}"}], ",", 
+             RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", 
+             RowBox[{"LabelStyle", "\[Rule]", "Large"}]}], "]"}]}], 
+          "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Graphics", "[", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"Red", ",", 
+            RowBox[{"PointSize", "[", "0.015", "]"}], ",", "lights", ",", 
+            "\[IndentingNewLine]", "Blue", ",", "sensors"}], 
+           "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", "Large"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"\"\<AllowRasterization\>\"", "\[Rule]", "True"}]}], 
+    "\[IndentingNewLine]", "]"}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.709821698045879*^9, 3.709821714023641*^9}, {
+   3.70982185140767*^9, 3.7098218516757717`*^9}, {3.709821924313801*^9, 
+   3.709822112183476*^9}, {3.709822174626226*^9, 3.709822181982655*^9}, {
+   3.709822298395361*^9, 3.709822386188302*^9}, 
+   3.7098227434031343`*^9},ExpressionUUID->"d97c0f98-9749-4671-b10b-\
+4f3f3f44218f"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<lightmap-3d-power.pdf\>\"", ",", "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"lights", "=", 
+         RowBox[{
+          RowBox[{"Function", "[", 
+           RowBox[{"x", ",", 
+            RowBox[{"Point", "[", 
+             RowBox[{"LightLocationTop", "[", 
+              RowBox[{"LightLocation", "[", "x", "]"}], "]"}], "]"}]}], "]"}],
+           "/@", "lightLocations"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"sensors", "=", 
+         RowBox[{
+          RowBox[{"Function", "[", 
+           RowBox[{"x", ",", 
+            RowBox[{"Point", "[", 
+             RowBox[{"SensorLocationTop", "[", 
+              RowBox[{"SensorLocation", "[", "x", "]"}], "]"}], "]"}]}], 
+           "]"}], "/@", "sensorLocations"}]}], ","}], "\[IndentingNewLine]", 
+       "}"}], ",", 
+      RowBox[{"Show", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Block", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"e", "=", "781.16865559221`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"f", "=", "18.687029009970505`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"g", "=", "0.04543579627259158`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"h", "=", "0.025889601707422678`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"i", "=", "1803.8813453926575`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"j", "=", "1656.9877816025771`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"k", "=", "366.68870376178717`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"l", "=", "87.1305711702321`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"m", "=", "781.8545698065991`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"n", "=", "607.212554725495`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"o", "=", "326.9529524107318`"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"p", "=", "40.991674774165205`"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"DensityPlot", "[", 
+           RowBox[{
+            RowBox[{"CalcLxs", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"a", ",", "0", ",", "b"}], "}"}], ",", "0"}], "}"}], 
+              ",", "lightLocations"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "0", ",", "5400"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", "0", ",", "3600"}], "}"}], ",", 
+            RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+            RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", 
+            RowBox[{"LabelStyle", "\[Rule]", "Large"}]}], "]"}]}], 
+         "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{"Red", ",", 
+           RowBox[{"PointSize", "[", "0.015", "]"}], ",", "lights", ",", 
+           "\[IndentingNewLine]", "Blue", ",", "sensors"}], 
+          "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", 
+        RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", "Large"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+    RowBox[{"\"\<AllowRasterization\>\"", "\[Rule]", "True"}]}], 
+   "\[IndentingNewLine]", "]"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.709822821887396*^9, 3.7098228830998573`*^9}, {
+   3.709822928247085*^9, 3.709822940667478*^9}, 
+   3.709911878418314*^9},ExpressionUUID->"445413a7-ac1a-40d8-8c9c-\
+71af80d70c9f"]
+},
+WindowSize->{1650, 1011},
+WindowMargins->{{Automatic, 200}, {Automatic, 34}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (2017\:5e744\:670821\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7171, 159, 734, "Input", "ExpressionUUID" -> \
+"27302109-6e06-4def-9933-6d59bc3354e3"],
+Cell[7732, 181, 2933, 67, 158, "Input", "ExpressionUUID" -> \
+"d008c2b0-aa6e-4799-91e4-78313bd8f8ce"],
+Cell[10668, 250, 1092, 22, 68, "Input", "ExpressionUUID" -> \
+"02fa2998-60c2-4c9f-b025-0dc03ab02ba1"],
+Cell[11763, 274, 4140, 99, 150, "Input", "ExpressionUUID" -> \
+"f071ba21-3bcf-4cbd-8cb5-98561f368ed6"],
+Cell[15906, 375, 4174, 115, 202, "Input", "ExpressionUUID" -> \
+"691e102d-8ba1-4c0e-b272-824a557ebc7c"],
+Cell[20083, 492, 10264, 236, 1522, "Input", "ExpressionUUID" -> \
+"15be1499-ed86-43b2-ac5e-a34985c5f1e1"],
+Cell[30350, 730, 1354, 29, 142, InheritFromParent, "ExpressionUUID" -> \
+"07fd0711-566f-49c0-9b88-7bf2442b4904"],
+Cell[31707, 761, 389, 10, 50, "Input", "ExpressionUUID" -> \
+"7a064eae-4c79-44e7-9e71-7f29837bf3e2"],
+Cell[32099, 773, 4358, 92, 656, "Input", "ExpressionUUID" -> \
+"d97c0f98-9749-4671-b10b-4f3f3f44218f"],
+Cell[36460, 867, 3991, 87, 635, "Input", "ExpressionUUID" -> \
+"445413a7-ac1a-40d8-8c9c-71af80d70c9f"]
+}
+]
+*)
+
